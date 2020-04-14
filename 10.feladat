@@ -6,3 +6,10 @@ while teszt<1 or teszt>100:
 
 bemenet=[teszt]
 kimenet=[]
+
+for i in range(teszt):
+    A = int(input("A: "))
+    while A<1 or A>10**9:
+        print("Hibás szám!")
+        A = int(input("A: "))
+    bemenet.append(A)

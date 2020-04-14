@@ -1,0 +1,5 @@
+teszt=int(input("Kérem az esetek számát: "))   # tesztesetek számának bekérése
+
+while teszt<1 or teszt>100:   # tesztszám ellenőrző ciklus, mivel 1 és 100 közötti számnak kell lennie
+    print("Hibás szám!")
+    teszt=int(input("Teszt: "))

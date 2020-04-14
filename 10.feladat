@@ -13,3 +13,7 @@ for i in range(teszt):
         print("Hibás szám!")
         A = int(input("A: "))
     bemenet.append(A)
+    B = int(input("B: "))
+    while B<1 or B>10**9:
+        print("Hibás szám!")
+        B = int(input("B: "))

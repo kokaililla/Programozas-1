@@ -1,0 +1,27 @@
+lista=[]
+
+hossz=int(input("Milyen hosszú legyen a lista? "))
+atlag=0
+
+for i in range(hossz):
+    a=int(input("Adj egy számot: "))
+    lista.append(a)
+    atlag += a
+
+atlag=atlag/len(lista)
+
+x=0
+
+while x < hossz:
+    if lista[x] < atlag and lista[x]!=0:
+        lista.remove(lista[x])
+        hossz-=1
+        x-=1
+    x+=1
+    
+for e in range(len(lista)):
+    for j in range(len(lista)):
+        if lista[j] > lista[e]:
+            lista[e],lista[j] = lista[j],lista[e]
+
+print(lista)

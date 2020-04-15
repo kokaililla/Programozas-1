@@ -1,0 +1,23 @@
+teszt=int(input("Kérem az esetek számát: "))
+
+while teszt<1 or teszt>100:
+    print("Hibás szám!")
+    teszt=int(input("Teszt: "))
+
+bemenet=[teszt]
+kimenet=[]
+
+for i in range(teszt):
+    A = int(input("A: "))
+    while A<1 or A>10**9:
+        print("Hibás szám!")
+        A = int(input("A: "))
+    bemenet.append(A)
+    B = int(input("B: "))
+    while B<1 or B>10**9:
+        print("Hibás szám!")
+        B = int(input("B: "))
+    bemenet.append(B)
+    kimenet.append(A+B-10)
+
+print("Teszt input:", bemenet, "Teszt output:", kimenet)

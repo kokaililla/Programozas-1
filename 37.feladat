@@ -9,3 +9,12 @@ for i in range(hossz):
     atlag += a
 
 atlag=atlag/len(lista)
+
+x=0
+
+while x < hossz:
+    if lista[x] < atlag and lista[x]!=0:
+        lista.remove(lista[x])
+        hossz-=1
+        x-=1
+    x+=1

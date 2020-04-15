@@ -2,3 +2,8 @@ lista=[]
 
 hossz=int(input("Milyen hosszú legyen a lista? "))
 atlag=0
+
+for i in range(hossz):
+    a=int(input("Adj egy számot: "))
+    lista.append(a)
+    atlag += a

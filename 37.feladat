@@ -1,0 +1,4 @@
+lista=[]
+
+hossz=int(input("Milyen hosszú legyen a lista? "))
+atlag=0

@@ -18,3 +18,10 @@ while x < hossz:
         hossz-=1
         x-=1
     x+=1
+    
+for e in range(len(lista)):
+    for j in range(len(lista)):
+        if lista[j] > lista[e]:
+            lista[e],lista[j] = lista[j],lista[e]
+
+print(lista)

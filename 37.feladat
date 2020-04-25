@@ -8,20 +8,39 @@ for i in range(hossz):
     lista.append(a)
     atlag += a
 
-atlag=atlag/len(lista)
+atlag=atlag/len(lista) 
+
+x = 0
+y = hossz-1
+
+while x < y:
+    if lista[x] == 0:
+        csere = False
+        while x < y and csere == False:
+            if lista[y] != 0:
+                lista[x], lista[y] = lista[y], lista[x]
+                csere = True
+            else:
+                y -= 1
+    x += 1
+
+for e in range(len(lista)):
+    if lista[e] == 0:
+        break
+    for j in range(len(lista)):
+        if lista[j] == 0:
+            break
+        elif lista[j] > lista[e]:
+            lista[e],lista[j] = lista[j],lista[e]
 
 x=0
 
-while x < hossz:
-    if lista[x] < atlag and lista[x]!=0:
+while lista[x] < atlag:
+
+    if lista[x] != 0:
         lista.remove(lista[x])
         hossz-=1
-        x-=1
-    x+=1
-    
-for e in range(len(lista)):
-    for j in range(len(lista)):
-        if lista[j] > lista[e]:
-            lista[e],lista[j] = lista[j],lista[e]
+    else:
+        x+=1
 
 print(lista)

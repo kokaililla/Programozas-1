@@ -1,0 +1,56 @@
+class SMS:
+    def __init__(self,telefonszam,ora,perc,uzenet):
+        self.telefonszam = telefonszam
+        self.ora = ora
+        self.perc = perc
+        self.uzenet = uzenet
+
+sorok = int(input("Hány sort kérjek be? "))
+uzenetek = []
+
+for i in range(sorok):
+    while True:
+        try:
+            adat = input("Adja meg az SMS adatait szóközökkel elválasztva! (Például: 06301234567 24 01 Hello World!) ")
+            if int(adat[0:11]) and (int(adat[12:13]) or int(adat[12:13]) == 0) and (int(adat[13:14]) or int(adat[13:14]) == 0) and (int(adat[15:16]) or int(adat[15:16]) == 0) and (int(adat[16:17]) or int(adat[16:17]) == 0):
+                while int(adat[12:14]) >= 24 or int(adat[15:17]) >= 60:
+                    print("Hibás időintervallum!")
+                    adat = input("Adja meg az SMS adatait szóközökkel elválasztva! (Például: 06301234567 24 01 Hello World!) ")
+                uzenetek.append(SMS(adat[0:11], adat[12:14], adat[15:17], adat[18:]))
+            break
+        except ValueError:
+            print("Ez nem érvényes adat.")
+
+
+for i in range(len(uzenetek)):
+    for j in range(i,len(uzenetek)):
+        if uzenetek[i].telefonszam != uzenetek[j].telefonszam:
+            for k in range(j,len(uzenetek)):
+                if uzenetek[k].telefonszam == uzenetek[i].telefonszam:
+                    uzenetek[k],uzenetek[j] = uzenetek[j],uzenetek[k]
+                    break
+
+for i in range(len(uzenetek)):
+    for j in range(i,len(uzenetek)):
+        if uzenetek[i].telefonszam == uzenetek[j].telefonszam:
+            if uzenetek[i].ora > uzenetek[j].ora:
+                uzenetek[j],uzenetek[i] = uzenetek[i],uzenetek[j]
+            elif uzenetek[i].ora == uzenetek[j].ora and uzenetek[i].perc > uzenetek[j].perc:
+                uzenetek[j], uzenetek[i] = uzenetek[i], uzenetek[j]
+
+output = ""
+sorszam = 1
+for i in range(len(uzenetek)):
+    if i == 0:
+        output += str(uzenetek[i].telefonszam) + "\n \t" + str(sorszam) + ". " + str(uzenetek[i].ora) + ":" + str(uzenetek[i].perc) + " " + uzenetek[i].uzenet
+    elif uzenetek[i].telefonszam == uzenetek[i-1].telefonszam:
+        sorszam += 1
+        output += "\n \t" + str(sorszam) + ". " + str(uzenetek[i].ora) + ":" + str(uzenetek[i].perc) + " " + uzenetek[i].uzenet
+    else:
+        sorszam = 1
+        output += "\n" + str(uzenetek[i].telefonszam) + "\n \t" + str(sorszam) + ". " + str(uzenetek[i].ora) + ":" + str(uzenetek[i].perc) + " " + uzenetek[i].uzenet
+
+print(output)
+outfile = open("D:\\Egyetem\\Tantárgyak\\2 Programozás 1\\Dolgozat\\smsek.txt","w")
+print(output,file=outfile)
+outfile.close()
